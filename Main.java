@@ -30,7 +30,11 @@ public class Main {
 				break;
 			case "delete":
 				// how the heck do i do this
-				System.out.println("Not implemented yet lol");
+				String query = parameter.nextLine();
+				ArrayList<GameStorage> gameList = findElement(games, query);
+				for(GameStorage ge : gameList) {
+					System.out.println(ge.getName());
+				}
 				break;
 			case "show":
 				printList(games);
@@ -62,4 +66,22 @@ public class Main {
 			}
 		}
 	}
+
+public static ArrayList<GameStorage> findElement(ArrayList<GameStorage> gameList, String query) {
+	ArrayList<GameStorage> temp = new ArrayList<GameStorage>();
+	for(int i = 0; i < gameList.size(); i++) {
+		// Check if the given query is equal to the current element
+		// Java is at the given moment
+		if((gameList.get(i).getName()).equalsIgnoreCase(query)) {
+			// If the gameList is empty, say that it didn't find anything
+			// and break the loop
+			if(gameList.size() == 0) {
+				System.out.println("Did not find anything!");
+				break;
+			}
+			temp.add(gameList.get(i));
+		}
+	}
+	return temp;
+}
 }
