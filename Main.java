@@ -22,7 +22,7 @@ public class Main {
 		
 		System.out.println("Welcome to the Game Library!");
 		
-		mainLoop: while(!finished || command == "exit") {
+	while(!finished || command == "exit") {
 			System.out.println("What would you like to do? \n"
 					+ "(add) new game, (delete) game, (show) list, (edit) game");
 			command = input.nextLine();
@@ -67,7 +67,8 @@ public class Main {
 				break;
 			case "exit":
 				System.out.println("quitting...");
-				break mainLoop;
+				finished = true;
+				break;
 			default:
 				System.out.println("what");
 				break;
