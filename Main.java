@@ -3,12 +3,14 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.Scanner;
 
 /*
- * TODO: Add a way to edit
+ * TODO: Add a way to edit DONE
  * TODO: Make the show function a little prettier
  * TODO: GUI elements eventually?
  * TODO: Conflict between eventual duplicate gameList objects, fix
  * 	TODO: Fetch images from the web to show the game-cover
- * 
+ * Author: William Ø.
+ * Date: 26.08.2016
+ * Name: Video Game "Library"
  */
 
 public class Main {
@@ -51,7 +53,7 @@ public class Main {
 					ArrayList<GameStorage> gameList = findElement(games, query);
 					printNumberedList(gameList);
 					System.out.println("\nWhich number would you like to delete?");
-					int deleteAt = parameter.nextInt();
+					int deleteAt = getIntFromUser(parameter);
 					// Make sure there are no illegal selections
 					if(deleteAt <= 0 || deleteAt > gameList.size()) System.out.println("Nothing there!");
 					else {
@@ -176,6 +178,8 @@ public class Main {
 	public static int getIntFromUser(Scanner s) {
 		while(!s.hasNextInt()) {
 			s.next();
+			// Strictly not necessary, but still
+			System.out.println("Please input a number!");
 		}
 		return s.nextInt();
 	}
