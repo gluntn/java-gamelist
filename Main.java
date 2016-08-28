@@ -72,7 +72,18 @@ public class Main {
 					
 					ArrayList<GameStorage> gameListE = findElement(games, queryE);
 					printNumberedList(gameListE);
-					System.out.println("\nWhich number would you like to delete?");
+					System.out.println("\nWhich number would you like to edit?");
+					// Change to property/properties
+					// Formatted string string.length() == 1 ? property : properties
+					System.out.println("What properties would you like to edit?");
+					// TODO: figure this one out
+					// not good omg
+					boolean done = false;
+					while(!done) {
+						// TODO: add functionality
+						break;
+					}
+					
 					
 					break;
 				case "exit":
@@ -85,6 +96,10 @@ public class Main {
 			}
 			
 		}
+		
+		// Close the Scanner objects
+		parameter.close();
+		input.close();
 		
 	}
 	
