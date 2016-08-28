@@ -66,6 +66,8 @@ public class Main {
 					break;
 				case "edit":
 					// System.out.println("Not implemented yet lol");
+					// TODO: Remove all the capital E's
+					// and figure out another way to do this
 					
 					System.out.println("Which item would you like to change?");
 					String queryE = parameter.next();
@@ -73,14 +75,39 @@ public class Main {
 					ArrayList<GameStorage> gameListE = findElement(games, queryE);
 					printNumberedList(gameListE);
 					System.out.println("\nWhich number would you like to edit?");
+					int indexToEdit = getIntFromUser(parameter);
 					// Change to property/properties
 					// Formatted string string.length() == 1 ? property : properties
-					System.out.println("What properties would you like to edit?");
+					GameStorage currentGame = gameListE.get(indexToEdit - 1);
 					// TODO: figure this one out
 					// not good omg
 					boolean done = false;
 					while(!done) {
-						// TODO: add functionality
+						// TODO: fix so that it actually loops
+						// why does it not loop?
+						System.out.println("What aspect will you edit?\nName, publisher or age? (TYPE 'done' WHEN YOU ARE DONE.)");
+						String param = parameter.next();
+						if(param == "exit") break;
+						switch(param) {
+							case "name":
+								String nameE = parameter.next();
+								currentGame.setName(nameE);
+								break;
+							case "publisher":
+								String publisherE = parameter.next();
+								currentGame.setPublisher(publisherE);
+								break;
+							case "age":
+								int ageE = getIntFromUser(parameter);
+								currentGame.setAge(ageE);
+								break;
+							case "done":
+								done = true;
+								break;
+							default:
+								System.out.println(param + "is not a valid command!");	
+						}
+						
 						break;
 					}
 					
@@ -137,10 +164,20 @@ public class Main {
 		return temp;
 	}
 	
+	// Function that prints out a numbered list so that 
+	// Maybe "port" this to the class itself?
 	public static void printNumberedList(ArrayList<GameStorage> gameList) {
 		for(int i = 0; i < gameList.size(); i++) {
 			System.out.println((i+1) + " " + gameList.get(i).getName());
 		}
+	}
+	
+	// Make sure that the user actaully inputs an integer
+	public static int getIntFromUser(Scanner s) {
+		while(!s.hasNextInt()) {
+			s.next();
+		}
+		return s.nextInt();
 	}
 	
 }
